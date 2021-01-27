@@ -24,10 +24,16 @@ function assertUserApiResult(obj: any): asserts obj is MyApiResult<MyUser> {
 }
 
 async function fetchUser(id: number): Promise<MyApiResult<MyUser>> {
-    const response = await fetch(`https://reqres.in/api/users/$(id)`);
+    // make use of string template literals using string interpolation
+    const fetchUrl: string = `https://reqres.in/api/users/${id}`;
+    const response = await fetch(fetchUrl);
     const json: unknown = await response.json();
     assertUserApiResult(json);
     return json;
 }
 
+// main code
+
 fetchUser(2).then(result => console.log(result.data.email));
+fetchUser(3).then(result => console.log(result.data.email));
+fetchUser(4).then(result => console.log(result.data.email));

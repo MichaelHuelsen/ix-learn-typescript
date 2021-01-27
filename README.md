@@ -52,6 +52,6 @@ npx tsc --watch
 
 Execute the transpiled program
 ```
-node dist/file.js
+node dist/sample.js
 ```
 
